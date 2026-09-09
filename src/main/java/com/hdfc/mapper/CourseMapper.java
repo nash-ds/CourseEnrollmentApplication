@@ -1,0 +1,4 @@
+package com.hdfc.mapper;
+
+public class CourseMapper {
+}
