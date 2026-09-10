@@ -1,0 +1,534 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/enrollments/{id}/complete": {
+            "put": {
+                "tags": [
+                    "enrollment-controller"
+                ],
+                "operationId": "updateEnrollment",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/enrollments/{id}/cancel": {
+            "put": {
+                "tags": [
+                    "enrollment-controller"
+                ],
+                "operationId": "cancelEnrollment",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/{id}": {
+            "get": {
+                "tags": [
+                    "course-controller"
+                ],
+                "operationId": "getCourseById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CourseResponseDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "course-controller"
+                ],
+                "operationId": "updateCourse",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CourseRequestDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "course-controller"
+                ],
+                "operationId": "deleteCourse",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/enrollments": {
+            "get": {
+                "tags": [
+                    "enrollment-controller"
+                ],
+                "operationId": "getAllEnrollments",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EnrollmentResponseDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "enrollment-controller"
+                ],
+                "operationId": "createEnrollment",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EnrollmentRequestDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/courses": {
+            "get": {
+                "tags": [
+                    "course-controller"
+                ],
+                "operationId": "getAllCourses",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CourseResponseDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "course-controller"
+                ],
+                "operationId": "createCourse",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CourseRequestDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/enrollments/{id}": {
+            "get": {
+                "tags": [
+                    "enrollment-controller"
+                ],
+                "operationId": "getEnrollmentById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EnrollmentResponseDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/enrollments/status/{status}": {
+            "get": {
+                "tags": [
+                    "enrollment-controller"
+                ],
+                "operationId": "getEnrollmentByStatus",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EnrollmentResponseDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/enrollments/employee/{employeeId}": {
+            "get": {
+                "tags": [
+                    "enrollment-controller"
+                ],
+                "operationId": "getEnrollmentByEmployeeId",
+                "parameters": [
+                    {
+                        "name": "employeeId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/EnrollmentResponseDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/trainer/{trainerName}": {
+            "get": {
+                "tags": [
+                    "course-controller"
+                ],
+                "operationId": "getCourseByTrainer",
+                "parameters": [
+                    {
+                        "name": "trainerName",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CourseResponseDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/fees/{amount}": {
+            "get": {
+                "tags": [
+                    "course-controller"
+                ],
+                "operationId": "getCourseLessThan",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "double"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CourseResponseDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CourseRequestDto": {
+                "type": "object",
+                "properties": {
+                    "courseId": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 1
+                    },
+                    "courseName": {
+                        "type": "string",
+                        "example": "JDBC course"
+                    },
+                    "trainerName": {
+                        "type": "string",
+                        "example": "Ratan"
+                    },
+                    "durationInDays": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 4
+                    },
+                    "maxCapacity": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 2
+                    },
+                    "fees": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 10000
+                    }
+                }
+            },
+            "EnrollmentRequestDto": {
+                "type": "object",
+                "properties": {
+                    "enrollmentId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "employeeId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "employeeName": {
+                        "type": "string"
+                    },
+                    "courseId": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "required": [
+                    "courseId",
+                    "employeeId",
+                    "employeeName",
+                    "enrollmentId"
+                ]
+            },
+            "EnrollmentResponseDto": {
+                "type": "object",
+                "properties": {
+                    "employeeId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "employeeName": {
+                        "type": "string"
+                    },
+                    "courseId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "enrollmentDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CourseResponseDto": {
+                "type": "object",
+                "properties": {
+                    "courseName": {
+                        "type": "string"
+                    },
+                    "trainerName": {
+                        "type": "string"
+                    },
+                    "maxCapacity": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "fees": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                }
+            }
+        }
+    }
+}
